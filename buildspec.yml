@@ -6,8 +6,13 @@ phases:
       nodejs: 8
   build:
     commands:
-      - CODEBUILD_BUILD_SUCCEEDING=1
-      - exit 1
+      - touch imagedefinitions.json
+      - git clone https://github.com/magler/test.git && cd test 
+      - GIT_TAG=$(git describe --tag)
+      - |
+         if [[ "${GIT_TAG}" =~ "demo" ]]; then
+           touch imagedefinitions-demo.json;
+         fi
 artifacts:
-  files: imagedefinitions.json
-  name: artifact-${DEPLOYABLE}
+  files:
+    - imagedefinitions*.json
