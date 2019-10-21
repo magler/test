@@ -15,6 +15,7 @@ phases:
            echo 'Writing demo imagedefinitions-demo.json'
            echo '[{"name":"node","imageUri":"node"}]' > imagedefinitions-demo.json
          fi
+      - ls
       - echo 'done'
 artifacts:
   files:
