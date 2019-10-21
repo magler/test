@@ -9,6 +9,7 @@ phases:
       - echo '[{"name":"node","imageUri":"node"}]' > imagedefinitions.json
       - git clone https://github.com/magler/test.git && cd test
       - GIT_TAG=$(git describe --tag)
+      - cd ..
       - echo ${GIT_TAG}
       - |
          if [[ "${GIT_TAG}" =~ "demo" ]]; then
