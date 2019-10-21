@@ -6,12 +6,14 @@ phases:
       nodejs: 8
   build:
     commands:
-      - echo   { "name": "node", "imageUri": "node" } >> imagedefinitions.json
+      - echo   "{ \"name\": \"node\", \"imageUri\": \"node\" }" >> imagedefinitions.json
       - git clone https://github.com/magler/test.git && cd test 
       - GIT_TAG=$(git describe --tag)
+      - echo "found tag: ${GIT_TAG}"
       - |
          if [[ "${GIT_TAG}" =~ "demo" ]]; then
-           echo   { "name": "node", "imageUri": "node" } >> imagedefinitions-demo.json
+           echo "Writing demo imagedefinitions-demo.json"
+           echo   "{ \"name\": \"node\", \"imageUri\": \"node\" }" >> imagedefinitions-demo.json
          fi
 artifacts:
   files:
